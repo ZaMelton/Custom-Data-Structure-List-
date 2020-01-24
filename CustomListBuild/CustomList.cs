@@ -119,5 +119,33 @@ namespace CustomListBuild
             }
             return minusedList;
         }
+
+        public CustomList<T> Zip(CustomList<T> second)
+        {
+            CustomList<T> zipped = new CustomList<T>();
+
+            int indexOne = 0;
+            int indexTwo = 0;
+
+            int lengthOfListsCombined = count + second.Count;
+
+            for(int i = 0; i < lengthOfListsCombined; i++)
+            {
+                if(count > indexOne)
+                {
+                    zipped.Add(items[indexOne]);
+                    indexOne++;
+                }
+
+                if(second.Count > indexTwo)
+                {
+                    zipped.Add(second[indexTwo]);
+                    indexTwo++;
+                }
+            }
+            
+            return zipped;
+        }
     }
+
 }

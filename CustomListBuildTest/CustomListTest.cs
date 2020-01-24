@@ -406,7 +406,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> added = new CustomList<int>();
+            CustomList<int> added;
             string expected = "135246";
 
             //Act
@@ -429,7 +429,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> added = new CustomList<int>();
+            CustomList<int> added;
             string expected = "135555246";
 
             //Act
@@ -455,7 +455,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> added = new CustomList<int>();
+            CustomList<int> added;
             string expected = "135555";
 
             //Act
@@ -478,7 +478,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> minused = new CustomList<int>();
+            CustomList<int> minused;
             string expected = "3";
 
             //Act
@@ -501,7 +501,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<string> items = new CustomList<string>();
             CustomList<string> itemsTwo = new CustomList<string>();
-            CustomList<string> minused = new CustomList<string>();
+            CustomList<string> minused;
             string expected = "3";
 
             //Act
@@ -524,7 +524,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> minused = new CustomList<int>();
+            CustomList<int> minused;
             string expected = "11";
 
             //Act
@@ -547,7 +547,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> minused = new CustomList<int>();
+            CustomList<int> minused;
             string expected = "23";
 
             //Act
@@ -572,7 +572,7 @@ namespace CustomListBuildTest
             //Arrange
             CustomList<int> items = new CustomList<int>();
             CustomList<int> itemsTwo = new CustomList<int>();
-            CustomList<int> minused = new CustomList<int>();
+            CustomList<int> minused;
             string expected = "";
 
             //Act
@@ -591,60 +591,122 @@ namespace CustomListBuildTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void ZipTest()
-        //{
-        //    //Arrange
-        //    CustomList<int> odd = new CustomList<int>();
-        //    CustomList<int> even = new CustomList<int>();
-        //    CustomList<int> zipped = new CustomList<int>();
-        //    string expectedResult = "123456";
+        [TestMethod]
+        public void ZipTest()
+        {
+            //Arrange
+            CustomList<int> first = new CustomList<int>();
+            CustomList<int> second = new CustomList<int>();
+            CustomList<int> zipped;
+            string expected = "123456";
 
-        //    //Act
-        //    odd.Add(1);
-        //    odd.Add(3);
-        //    odd.Add(5);
-        //    even.Add(2);
-        //    even.Add(4);
-        //    even.Add(6);
-        //    zipped.Add(odd[0]);
-        //    zipped.Add(even[0]);
-        //    zipped.Add(odd[1]);
-        //    zipped.Add(even[1]);
-        //    zipped.Add(odd[2]);
-        //    zipped.Add(even[2]);
+            //Act
+            first.Add(1);
+            first.Add(3);
+            first.Add(5);
+            second.Add(2);
+            second.Add(4);
+            second.Add(6);
+            zipped = first.Zip(second);
+            string actual = zipped.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(expectedResult, zipped.ToString());
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void ZipDifferentSizeListsTest()
-        //{
-        //    //Arrange
-        //    CustomList<int> odd = new CustomList<int>();
-        //    CustomList<int> even = new CustomList<int>();
-        //    CustomList<int> zipped = new CustomList<int>();
-        //    string expectedResult = "123456";
+        [TestMethod]
+        public void ZipListsFirstListIsLargerTest()
+        {
+            //Arrange
+            CustomList<int> first = new CustomList<int>();
+            CustomList<int> second = new CustomList<int>();
+            CustomList<int> zipped;
+            string expected = "12345679";
 
-        //    //Act
-        //    odd.Add(1);
-        //    odd.Add(3);
-        //    odd.Add(5);
-        //    even.Add(2);
-        //    even.Add(4);
-        //    even.Add(6);
-        //    even.Add(8);
-        //    even.Add(10);
-        //    zipped.Add(odd[0]);
-        //    zipped.Add(even[0]);
-        //    zipped.Add(odd[1]);
-        //    zipped.Add(even[1]);
-        //    zipped.Add(odd[2]);
-        //    zipped.Add(even[2]);
+            //Act
+            first.Add(1);
+            first.Add(3);
+            first.Add(5);
+            first.Add(7);
+            first.Add(9);
+            second.Add(2);
+            second.Add(4);
+            second.Add(6);
+            zipped = first.Zip(second);
+            string actual = zipped.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(expectedResult, zipped.ToString());
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ZipListsSecondListIsLargerTest()
+        {
+            //Arrange
+            CustomList<int> first = new CustomList<int>();
+            CustomList<int> second = new CustomList<int>();
+            CustomList<int> zipped;
+            string expected = "123456810";
+
+            //Act
+            first.Add(1);
+            first.Add(3);
+            first.Add(5);
+            second.Add(2);
+            second.Add(4);
+            second.Add(6);
+            second.Add(8);
+            second.Add(10);
+            zipped = first.Zip(second);
+            string actual = zipped.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ZipListsWithStringsTest()
+        {
+            //Arrange
+            CustomList<string> first = new CustomList<string>();
+            CustomList<string> second = new CustomList<string>();
+            CustomList<string> zipped;
+            string expected = "123456810";
+
+            //Act
+            first.Add("1");
+            first.Add("3");
+            first.Add("5");
+            second.Add("2");
+            second.Add("4");
+            second.Add("6");
+            second.Add("8");
+            second.Add("10");
+            zipped = first.Zip(second);
+            string actual = zipped.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ZipWhenAListEmptyTest()
+        {
+            //Arrange
+            CustomList<string> first = new CustomList<string>();
+            CustomList<string> second = new CustomList<string>();
+            CustomList<string> zipped;
+            string expected = "abc";
+
+            //Act
+            first.Add("a");
+            first.Add("b");
+            first.Add("c");
+            zipped = first.Zip(second);
+            string actual = zipped.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
