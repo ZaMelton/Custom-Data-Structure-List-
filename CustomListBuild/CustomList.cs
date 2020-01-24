@@ -78,7 +78,31 @@ namespace CustomListBuild
 
         public override string ToString()
         {
-            
+            StringBuilder sb = new StringBuilder();
+
+            for(int i = 0; i < count; i++)
+            {
+                sb.Append(items[i]);
+            }
+
+            return sb.ToString();
+        }
+
+        public static CustomList<T> operator+ (CustomList<T> one, CustomList<T> two)
+        {
+            CustomList<T> addedList = new CustomList<T>();
+
+            for (int i = 0; i < one.Count; i++)
+            {
+                addedList.Add(one[i]);
+            }
+
+            for (int i = 0; i < two.Count; i++)
+            {
+                addedList.Add(two[i]);
+            }
+
+            return addedList;
         }
     }
 

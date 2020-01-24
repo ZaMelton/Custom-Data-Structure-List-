@@ -400,32 +400,77 @@ namespace CustomListBuildTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void CheckAddListTogether()
-        //{
-        //    //Arrange
-        //    CustomList<int> items = new CustomList<int>();
-        //    CustomList<int> itemsTwo = new CustomList<int>();
-        //    CustomList<int> added = new CustomList<int>();
-        //    string expectedResult = "135246";
+        [TestMethod]
+        public void CheckAddListTogether()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> added = new CustomList<int>();
+            string expected = "135246";
 
-        //    //Act
-        //    items.Add(1);
-        //    items.Add(3);
-        //    items.Add(5);
-        //    itemsTwo.Add(2);
-        //    itemsTwo.Add(4);
-        //    itemsTwo.Add(6);
-        //    added.Add(items[0]);
-        //    added.Add(items[1]);
-        //    added.Add(items[2]);
-        //    added.Add(itemsTwo[0]);
-        //    added.Add(itemsTwo[1]);
-        //    added.Add(itemsTwo[2]);
+            //Act
+            items.Add(1);
+            items.Add(3);
+            items.Add(5);
+            itemsTwo.Add(2);
+            itemsTwo.Add(4);
+            itemsTwo.Add(6);
+            added = items + itemsTwo;
+            string actual = added.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(expectedResult, added.ToString());
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckAddListTogetherForDifferentSizeListsTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> added = new CustomList<int>();
+            string expected = "135555246";
+
+            //Act
+            items.Add(1);
+            items.Add(3);
+            items.Add(5);
+            items.Add(5);
+            items.Add(5);
+            items.Add(5);
+            itemsTwo.Add(2);
+            itemsTwo.Add(4);
+            itemsTwo.Add(6);
+            added = items + itemsTwo;
+            string actual = added.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckAddListTogetherIfTheListsAttemptedToAddAreEmpty()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> added = new CustomList<int>();
+            string expected = "135555";
+
+            //Act
+            items.Add(1);
+            items.Add(3);
+            items.Add(5);
+            items.Add(5);
+            items.Add(5);
+            items.Add(5);
+            added = items + itemsTwo;
+            string actual = added.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
         //[TestMethod]
         //public void ZipTest()
