@@ -702,6 +702,7 @@ namespace CustomListBuildTest
             first.Add("a");
             first.Add("b");
             first.Add("c");
+
             zipped = first.Zip(second);
             string actual = zipped.ToString();
 

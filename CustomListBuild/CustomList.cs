@@ -19,9 +19,23 @@ namespace CustomListBuild
         //indexer
         public T this[int index]
         {
-            get => items[index];
+            get
+            {
+                if(index < 0 || index >= count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                return items[index];
+            }
 
-            set => items[index] = value;
+            set 
+            {
+                if (index < 0 || index >= count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                items[index] = value;
+            } 
         }
 
         //constructor
