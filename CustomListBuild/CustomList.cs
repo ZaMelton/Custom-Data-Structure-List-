@@ -104,6 +104,17 @@ namespace CustomListBuild
 
             return addedList;
         }
+
+        public static CustomList<T> operator- (CustomList<T> one, CustomList<T> two)
+        {
+            CustomList<T> minusedList = one;
+
+            for (int i = 0; i < two.Count; i++)
+            {
+                minusedList.Remove(two[i]);
+            }
+            return minusedList;
+        }
     }
 
 

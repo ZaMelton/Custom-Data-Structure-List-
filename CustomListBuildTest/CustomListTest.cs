@@ -401,7 +401,7 @@ namespace CustomListBuildTest
         }
 
         [TestMethod]
-        public void CheckAddListTogether()
+        public void CheckAddListOperatorOverlaod()
         {
             //Arrange
             CustomList<int> items = new CustomList<int>();
@@ -467,6 +467,102 @@ namespace CustomListBuildTest
             items.Add(5);
             added = items + itemsTwo;
             string actual = added.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckMinusListOperatorOverload()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> minused = new CustomList<int>();
+            string expected = "3";
+
+            //Act
+            items.Add(1);
+            items.Add(2);
+            items.Add(3);
+            itemsTwo.Add(1);
+            itemsTwo.Add(2);
+            itemsTwo.Add(4);
+            minused = items - itemsTwo;
+            string actual = minused.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckMinusListForFirstListAllTheSameItem()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> minused = new CustomList<int>();
+            string expected = "11";
+
+            //Act
+            items.Add(1);
+            items.Add(1);
+            items.Add(1);
+            itemsTwo.Add(2);
+            itemsTwo.Add(1);
+            itemsTwo.Add(4);
+            minused = items - itemsTwo;
+            string actual = minused.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckMinusListForDifferentSizedLists()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> minused = new CustomList<int>();
+            string expected = "23";
+
+            //Act
+            items.Add(1);
+            items.Add(2);
+            items.Add(3);
+            itemsTwo.Add(1);
+            itemsTwo.Add(5);
+            itemsTwo.Add(4);
+            itemsTwo.Add(4);
+            itemsTwo.Add(4);
+            minused = items - itemsTwo;
+            string actual = minused.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckMinusListForDifferentSizedListsAndFirstListWillAllBeRemoved()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            CustomList<int> itemsTwo = new CustomList<int>();
+            CustomList<int> minused = new CustomList<int>();
+            string expected = "";
+
+            //Act
+            items.Add(1);
+            items.Add(2);
+            items.Add(3);
+            itemsTwo.Add(1);
+            itemsTwo.Add(2);
+            itemsTwo.Add(4);
+            itemsTwo.Add(3);
+            itemsTwo.Add(4);
+            minused = items - itemsTwo;
+            string actual = minused.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
