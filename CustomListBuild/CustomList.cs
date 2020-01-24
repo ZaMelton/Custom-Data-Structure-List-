@@ -37,18 +37,48 @@ namespace CustomListBuild
             if(count == capacity)
             {
                 capacity *= 2;
-                T[] temporaryItems = items;
-                items = new T[capacity];
-                int index = 0;
-
-                foreach (T item in temporaryItems)
-                {
-                    items[index] = item;
-                    index++;
-                }
+                CopyArray();
             }
             items[count] = value;
             count++;
+        }
+
+        public void CopyArray()
+        {
+            T[] temporaryItems = items;
+            items = new T[capacity];
+            int index = 0;
+
+            foreach (T item in temporaryItems)
+            {
+                items[index] = item;
+                index++;
+            }
+        }
+
+        public void Remove(T value)
+        {
+            T[] temporaryItems = items;
+            items = new T[capacity];
+            int index = 0;
+            int removedItems = 0;
+
+            foreach (T item in temporaryItems)
+            {
+                if(item.Equals(value) && removedItems == 0)
+                {
+                    removedItems++;
+                    count--;
+                    continue;
+                }
+                items[index] = item;
+                index++;
+            }
+        }
+
+        public override string ToString()
+        {
+            
         }
     }
 

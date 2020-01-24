@@ -208,61 +208,197 @@ namespace CustomListBuildTest
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void RemoveTest()
-        //{
-        //    //Arrange
-        //    CustomList<int> items = new CustomList<int>();
-        //    int value = 1;
-        //    int secondValue = 3;
-        //    int thirdValue = 5;
+        [TestMethod]
+        public void RemoveOneItemTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int expected = 5;
 
-        //    //Act
-        //    items.Add(value);
-        //    items.Add(secondValue);
-        //    items.Add(thirdValue);
-        //    items.Remove(secondValue);
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Remove(secondValue);
+            int actual = items[1];
 
-        //    //Assert
-        //    Assert.AreEqual(thirdValue, items[1]);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void CheckCountAfterRemoveTest()
-        //{
-        //    //Arrange
-        //    CustomList<int> items = new CustomList<int>();
-        //    int value = 5;
-        //    int secondValue = 7;
-        //    int expectedCount = 1;
+        [TestMethod]
+        public void CheckForRemoveItemThatDoesntExist()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int expected = 3;
 
-        //    //Act
-        //    items.Add(value);
-        //    items.Add(secondValue);
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Remove(4);
+            int actual = items.Count;
 
-        //    //Assert
-        //    Assert.AreEqual(expectedCount, items.Count);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
-        //[TestMethod]
-        //public void ToStringTest()
-        //{
-        //    //Arrange
-        //    CustomList<int> items = new CustomList<int>();
-        //    int value = 1;
-        //    int secondValue = 3;
-        //    int thirdValue = 5;
-        //    string expected = "135";
+        public void CheckOrderAfterRemoveTwoItemTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int fourthValue = 7;
+            int fifthValue = 9;
+            int expected = 9;
 
-        //    //Act
-        //    items.Add(value);
-        //    items.Add(secondValue);
-        //    items.Add(thirdValue);
-        //    string actual = items.ToString();
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Add(fourthValue);
+            items.Add(fifthValue);
+            items.Remove(secondValue);
+            items.Remove(fourthValue);
+            int actual = items[2];
 
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckCapacityAfterRemovingFifthElementTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            int fourthValue = 7;
+            int fifthValue = 9;
+            int expected = 8;
+
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Add(fourthValue);
+            items.Add(fifthValue);
+            items.Remove(fifthValue);
+            int actual = items.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckForRemovingOnlySpecifiedElementWhenThereAreMultiplesTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 1;
+            int thirdValue = 1;
+            int fourthValue = 1;
+            int fifthValue = 1;
+            int expected = 4;
+
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Add(fourthValue);
+            items.Add(fifthValue);
+            items.Remove(thirdValue);
+            int actual = items.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void CheckCountAfterRemoveTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 5;
+            int secondValue = 7;
+            int expected = 1;
+
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Remove(secondValue);
+            int actual = items.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToStringTestForItemsThatAreNotStrings()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            int value = 1;
+            int secondValue = 3;
+            int thirdValue = 5;
+            string expected = "135";
+
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            string actual = items.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToStringTestIfItemsAreStrings()
+        {
+            //Arrange
+            CustomList<string> items = new CustomList<string>();
+            string value = "Look";
+            string secondValue = "It's";
+            string thirdValue = "A";
+            string fourthValue = "String";
+            string expected = "LookIt'sAString";
+
+            //Act
+            items.Add(value);
+            items.Add(secondValue);
+            items.Add(thirdValue);
+            items.Add(fourthValue);
+            string actual = items.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToStringIfListIsEmptyTest()
+        {
+            //Arrange
+            CustomList<string> items = new CustomList<string>();
+            string expected = "";
+
+            //Act
+            string actual = items.ToString(); ;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
         //[TestMethod]
         //public void CheckAddListTogether()
