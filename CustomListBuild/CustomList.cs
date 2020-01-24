@@ -56,24 +56,28 @@ namespace CustomListBuild
             }
         }
 
-        public void Remove(T value)
+        public bool Remove(T value)
         {
             T[] temporaryItems = items;
             items = new T[capacity];
             int index = 0;
-            int removedItems = 0;
+            bool removedItems = false;
 
             foreach (T item in temporaryItems)
             {
-                if(item.Equals(value) && removedItems == 0)
+                if(item != null)
                 {
-                    removedItems++;
-                    count--;
-                    continue;
+                    if (item.Equals(value) && removedItems == false)
+                    {
+                        removedItems = true;
+                        count--;
+                        continue;
+                    }
+                    items[index] = item;
+                    index++;
                 }
-                items[index] = item;
-                index++;
             }
+            return removedItems;
         }
 
         public override string ToString()
@@ -116,6 +120,4 @@ namespace CustomListBuild
             return minusedList;
         }
     }
-
-
 }

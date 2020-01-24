@@ -496,6 +496,29 @@ namespace CustomListBuildTest
         }
 
         [TestMethod]
+        public void CheckMinusListOperatorOverloadForStrings()
+        {
+            //Arrange
+            CustomList<string> items = new CustomList<string>();
+            CustomList<string> itemsTwo = new CustomList<string>();
+            CustomList<string> minused = new CustomList<string>();
+            string expected = "3";
+
+            //Act
+            items.Add("1");
+            items.Add("2");
+            items.Add("3");
+            itemsTwo.Add("1");
+            itemsTwo.Add("2");
+            itemsTwo.Add("4");
+            minused = items - itemsTwo;
+            string actual = minused.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void CheckMinusListForFirstListAllTheSameItem()
         {
             //Arrange
@@ -584,6 +607,35 @@ namespace CustomListBuildTest
         //    even.Add(2);
         //    even.Add(4);
         //    even.Add(6);
+        //    zipped.Add(odd[0]);
+        //    zipped.Add(even[0]);
+        //    zipped.Add(odd[1]);
+        //    zipped.Add(even[1]);
+        //    zipped.Add(odd[2]);
+        //    zipped.Add(even[2]);
+
+        //    //Assert
+        //    Assert.AreEqual(expectedResult, zipped.ToString());
+        //}
+
+        //[TestMethod]
+        //public void ZipDifferentSizeListsTest()
+        //{
+        //    //Arrange
+        //    CustomList<int> odd = new CustomList<int>();
+        //    CustomList<int> even = new CustomList<int>();
+        //    CustomList<int> zipped = new CustomList<int>();
+        //    string expectedResult = "123456";
+
+        //    //Act
+        //    odd.Add(1);
+        //    odd.Add(3);
+        //    odd.Add(5);
+        //    even.Add(2);
+        //    even.Add(4);
+        //    even.Add(6);
+        //    even.Add(8);
+        //    even.Add(10);
         //    zipped.Add(odd[0]);
         //    zipped.Add(even[0]);
         //    zipped.Add(odd[1]);
