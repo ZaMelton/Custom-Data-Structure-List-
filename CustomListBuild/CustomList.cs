@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace CustomListBuild
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable<T>, IComparable<T>
     {
         T[] items;
         private int count;
@@ -53,6 +54,7 @@ namespace CustomListBuild
                 capacity *= 2;
                 CopyArray();
             }
+
             items[count] = value;
             count++;
         }
@@ -159,6 +161,26 @@ namespace CustomListBuild
             }
             
             return zipped;
+        }
+
+        //public CustomList<T> BubbleSort()
+        //{
+            
+        //}
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(T other)
+        {
+            throw new NotImplementedException();
         }
     }
 

@@ -709,5 +709,88 @@ namespace CustomListBuildTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        //[TestMethod]
+        //public void IEnumerableTest()
+        //{
+        //    //Arrange
+        //    CustomList<int> numbers = new CustomList<int>() { 1, 2, 3 };
+        //    int expected = 3;
+
+        //    //Act 
+        //    int actual = numbers[2];
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //[TestMethod]
+        //public void ListIterableTest()
+        //{
+        //    //Arrange
+        //    CustomList<int> nums = new CustomList<int>();
+        //    int expected = 10;
+        //    int actual;
+
+        //    //Act
+        //    nums.Add(1);
+        //    nums.Add(4);
+        //    nums.Add(5);
+        //    int total = 0;
+
+        //    foreach (int item in nums)
+        //    {
+        //        total += item;
+        //    }
+
+        //    actual = total;
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //[TestMethod]
+        //public void ListSortTest()
+        //{
+        //    //Arrange
+        //    CustomList<int> numbers = new CustomList<int>();
+        //    string expected = "123456789";
+
+        //    //Act
+        //    numbers.Add(3);
+        //    numbers.Add(1);
+        //    numbers.Add(4);
+        //    numbers.Add(2);
+        //    numbers.Add(6);
+        //    numbers.Add(5);
+        //    numbers.Add(9);
+        //    numbers.Add(7);
+        //    numbers.Add(8);
+
+        //    string actual = numbers.Sort().ToString();
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
+
+        //[TestMethod]
+        //public void ListOfStringSortTest()
+        //{
+        //    //Arrange
+        //    CustomList<string> stringList = new CustomList<string>();
+        //    string expected = "alligatorboycatdog";
+
+        //    //Act
+        //    stringList.Add("boy");
+        //    stringList.Add("alligator");
+        //    stringList.Add("dog");
+        //    stringList.Add("cat");
+        //    string actual = stringList.StringSort().ToString();
+
+        //    //Assert
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
+
+
 }
