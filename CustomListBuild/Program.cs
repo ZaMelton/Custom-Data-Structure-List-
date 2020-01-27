@@ -10,23 +10,6 @@ namespace CustomListBuild
     {
         static void Main(string[] args)
         {
-            CustomList<string> sortedArray = new CustomList<string>();
-
-            sortedArray.Add("Hi");
-
-            Type t = sortedArray[0].GetType();
-
-            Console.WriteLine(sortedArray[0].GetType());
-
-            if (t.Equals(typeof(string)))
-            {
-                Console.WriteLine("True");
-            }
-            else
-            {
-                Console.WriteLine("False");
-            }
-
             List<int> numbers = new List<int>() { 3, 2, 6, 1, 7 };
 
             int temp;
@@ -43,26 +26,6 @@ namespace CustomListBuild
                     }
                 }
             }
-
-
-
-            foreach(int number in numbers)
-            {
-                Console.WriteLine(number);
-            }
-            Console.WriteLine();
-
-            int[] nums = new int[5] { 1,4,3,6,9};
-
-
-            Array.Sort(nums);
-
-            foreach(int num in nums)
-            {
-                Console.WriteLine(  num);
-            }
-
-            Console.ReadLine();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Collections;
 
 namespace CustomListBuild
 {
-    public class CustomList<T> : IEnumerable<T>, IComparable<T>
+   public class CustomList<T> : IEnumerable where T : IComparable
     {
         T[] items;
         private int count;
@@ -39,6 +39,7 @@ namespace CustomListBuild
             } 
         }
 
+        //Iterator
         public IEnumerator GetEnumerator()
         {
             for(int i = 0; i < count; i++)
@@ -175,21 +176,6 @@ namespace CustomListBuild
         //{
             
         //}
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CompareTo(T other)
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }
