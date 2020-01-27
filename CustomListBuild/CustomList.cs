@@ -174,7 +174,6 @@ namespace CustomListBuild
 
         public void BubbleSort()
         {
-            //Bubble sort
             T temp;
             for (int i = 0; i < count - 1; i++)
             {
@@ -185,10 +184,33 @@ namespace CustomListBuild
                         temp = items[j];
                         items[j] = items[j + 1];
                         items[j + 1] = temp;
-
                     }
                 }
             }
+        }
+
+        public bool Contains(T value)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(value))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int IndexOf(T value)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (items[i].CompareTo(value) == 0)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 

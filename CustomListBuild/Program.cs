@@ -10,22 +10,10 @@ namespace CustomListBuild
     {
         static void Main(string[] args)
         {
-            List<int> numbers = new List<int>() { 3, 2, 6, 1, 7 };
+            List<int> numList = new List<int>() { 1,2,3,4,5,6};
 
-            int temp;
-            for (int i = 0; i < numbers.Count - 2; i++)
-            {
-                for(int j = 0; j < numbers.Count - 2; j++)
-                {
-                    if (numbers[j] > numbers[j + 1])
-                    {
-                        temp = numbers[j];
-                        numbers[j] = numbers[j + 1];
-                        numbers[j + 1] = temp;
-
-                    }
-                }
-            }
+            Console.WriteLine(numList.IndexOf(0)); 
+            Console.ReadLine();
         }
     }
 }

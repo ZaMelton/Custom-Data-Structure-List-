@@ -791,7 +791,47 @@ namespace CustomListBuildTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void ContainsTest()
+        {
+            //Arrange
+            CustomList<string> stringList = new CustomList<string>() { "a", "b", "c", "d"};
+            bool expected = true;
+
+            //Act
+            bool actual = stringList.Contains("b");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void IndexOfTest()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            int expected = 2;
+
+            //Act
+            int actual = numberList.IndexOf(5);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void IndexOfWhenValueIsntInListTest()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>() { 1, 3, 5, 7, 9 };
+            int expected = -1;
+
+            //Act
+            int actual = numberList.IndexOf(15);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
-
-
 }
