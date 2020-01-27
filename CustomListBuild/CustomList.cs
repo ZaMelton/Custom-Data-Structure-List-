@@ -172,10 +172,24 @@ namespace CustomListBuild
             return zipped;
         }
 
-        //public CustomList<T> BubbleSort()
-        //{
-            
-        //}
+        public void BubbleSort()
+        {
+            //Bubble sort
+            T temp;
+            for (int i = 0; i < count - 1; i++)
+            {
+                for (int j = 0; j < count - 1; j++)
+                {
+                    if (items[j].CompareTo(items[j + 1]) == 1)//Check for greater than
+                    {
+                        temp = items[j];
+                        items[j] = items[j + 1];
+                        items[j + 1] = temp;
+
+                    }
+                }
+            }
+        }
     }
 
 }
