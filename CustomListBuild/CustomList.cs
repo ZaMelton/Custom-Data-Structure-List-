@@ -195,6 +195,29 @@ namespace CustomListBuild
             }
         }
 
+        public static void SelectionSort(CustomList<T> listToSort)
+        {
+            T minValue;
+            int index;
+
+            for (int i = 0; i < listToSort.Count - 1; i++)
+            {
+                index = i;
+                minValue = listToSort[i];
+
+                for(int j = i; j < listToSort.Count; j++)
+                {
+                    if(listToSort[j].CompareTo(minValue) == -1)
+                    {
+                        minValue = listToSort[j];
+                        index = j;
+                    }
+                }
+                listToSort[index] = listToSort[i];
+                listToSort[i] = minValue;
+            }
+        }
+
         public bool Contains(T value)
         {
             for(int i = 0; i < count; i++)

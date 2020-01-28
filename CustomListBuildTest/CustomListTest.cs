@@ -933,5 +933,48 @@ namespace CustomListBuildTest
             //Act
             numberList.RemoveRange(1, 6);
         }
+
+        [TestMethod]
+        public void SelectionSortTest()
+        {
+            //Arrange
+            CustomList<int> numbers = new CustomList<int>();
+            string expected = "123456789";
+
+            //Act
+            numbers.Add(3);
+            numbers.Add(1);
+            numbers.Add(4);
+            numbers.Add(2);
+            numbers.Add(6);
+            numbers.Add(5);
+            numbers.Add(9);
+            numbers.Add(7);
+            numbers.Add(8);
+            CustomList<int>.SelectionSort(numbers);
+            string actual = numbers.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SelectionSortStringSortTest()
+        {
+            //Arrange
+            CustomList<string> stringList = new CustomList<string>();
+            string expected = "alligatorboycatdog";
+
+            //Act
+            stringList.Add("boy");
+            stringList.Add("alligator");
+            stringList.Add("dog");
+            stringList.Add("cat");
+            CustomList<string>.SelectionSort(stringList);
+            string actual = stringList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
