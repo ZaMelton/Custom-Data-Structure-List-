@@ -245,6 +245,11 @@ namespace CustomListBuild
             items = new T[capacity];
             int itemsSkipped = 0;
 
+            if(startIndex + amountToRemove > count || startIndex < 0 || startIndex > count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             for(int i = 0, j = 0; i < count; i++, j++)
             {
                 if(temporaryItems[i] != null)

@@ -907,5 +907,31 @@ namespace CustomListBuildTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void RemoveRangeWithStringsTest()
+        {
+            //Arrange
+            CustomList<string> numberList = new CustomList<string>() { "1", "3", "5", "7", "6" };
+            string expected = "1";
+
+            //Act
+            numberList.RemoveRange(1, 4);
+            string actual = numberList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void RemoveRangeWhereAmountIsOutOfRangeTest()
+        {
+            //Arrange
+            CustomList<string> numberList = new CustomList<string>() { "1", "3", "5", "7", "6" };
+
+            //Act
+            numberList.RemoveRange(1, 6);
+        }
     }
 }
