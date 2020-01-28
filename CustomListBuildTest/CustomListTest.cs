@@ -8,6 +8,35 @@ namespace CustomListBuildTest
     public class CustomListTest
     {
         [TestMethod]
+        public void ListConstructorTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>();
+            
+            int expected = 4;//should have a count of zero and a capacity of 4, so expected is 4 with count + capacity
+
+            //Act
+            int actual = items.Count + items.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ListConstructorWithCapacityParameterTest()
+        {
+            //Arrange
+            CustomList<int> items = new CustomList<int>(7);
+            int expected = 7;
+
+            //Act
+            int actual = items.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void AddTest()
         {
             //Arrange
@@ -607,7 +636,7 @@ namespace CustomListBuildTest
             second.Add(2);
             second.Add(4);
             second.Add(6);
-            zipped = first.Zip(second);
+            zipped = CustomList<int>.Zip(first, second);
             string actual = zipped.ToString();
 
             //Assert
@@ -632,7 +661,7 @@ namespace CustomListBuildTest
             second.Add(2);
             second.Add(4);
             second.Add(6);
-            zipped = first.Zip(second);
+            zipped = CustomList<int>.Zip(first, second);
             string actual = zipped.ToString();
 
             //Assert
@@ -657,7 +686,7 @@ namespace CustomListBuildTest
             second.Add(6);
             second.Add(8);
             second.Add(10);
-            zipped = first.Zip(second);
+            zipped = CustomList<int>.Zip(first, second);
             string actual = zipped.ToString();
 
             //Assert
@@ -682,7 +711,7 @@ namespace CustomListBuildTest
             second.Add("6");
             second.Add("8");
             second.Add("10");
-            zipped = first.Zip(second);
+            zipped = CustomList<string>.Zip(first, second);
             string actual = zipped.ToString();
 
             //Assert
@@ -703,7 +732,7 @@ namespace CustomListBuildTest
             first.Add("b");
             first.Add("c");
 
-            zipped = first.Zip(second);
+            zipped = CustomList<string>.Zip(first, second);
             string actual = zipped.ToString();
 
             //Assert
@@ -766,7 +795,7 @@ namespace CustomListBuildTest
             numbers.Add(9);
             numbers.Add(7);
             numbers.Add(8);
-            numbers.BubbleSort();
+            CustomList<int>.BubbleSort(numbers);
             string actual = numbers.ToString();
 
             //Assert
@@ -785,7 +814,7 @@ namespace CustomListBuildTest
             stringList.Add("alligator");
             stringList.Add("dog");
             stringList.Add("cat");
-            stringList.BubbleSort();
+            CustomList<string>.BubbleSort(stringList);
             string actual = stringList.ToString();
 
             //Assert
@@ -864,7 +893,19 @@ namespace CustomListBuildTest
             Assert.AreEqual(expected, actual);
         }
 
-        
+        [TestMethod]
+        public void RemoveRangeTest()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>() { 1, 3, 5, 7, 5 };
+            string expected = "15";
 
+            //Act
+            numberList.RemoveRange(1, 3);
+            string actual = numberList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

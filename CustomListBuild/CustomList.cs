@@ -56,6 +56,13 @@ namespace CustomListBuild
             count = 0;
         }
 
+        public CustomList(int capacity)
+        {
+            this.capacity = capacity;
+            items = new T[capacity];
+            count = 0;
+        }
+
         public void Add(T value)
         {
             if(count == capacity)
@@ -145,45 +152,44 @@ namespace CustomListBuild
             return minusedList;
         }
 
-        public CustomList<T> Zip(CustomList<T> second)
+        public static CustomList<T> Zip(CustomList<T> first, CustomList<T> second)
         {
             CustomList<T> zipped = new CustomList<T>();
 
             int indexOne = 0;
             int indexTwo = 0;
 
-            int lengthOfListsCombined = count + second.Count;
+            int lengthOfListsCombined = first.Count + second.Count;
 
-            for(int i = 0; i < lengthOfListsCombined; i++)
+            for (int i = 0; i < lengthOfListsCombined; i++)
             {
-                if(count > indexOne)
+                if (first.Count > indexOne)
                 {
-                    zipped.Add(items[indexOne]);
+                    zipped.Add(first[indexOne]);
                     indexOne++;
                 }
 
-                if(second.Count > indexTwo)
+                if (second.Count > indexTwo)
                 {
                     zipped.Add(second[indexTwo]);
                     indexTwo++;
                 }
             }
-            
             return zipped;
         }
 
-        public void BubbleSort()
+        public static void BubbleSort(CustomList<T> listToSort)
         {
             T temp;
-            for (int i = 0; i < count - 1; i++)
+            for (int i = 0; i < listToSort.Count - 1; i++)
             {
-                for (int j = 0; j < count - 1; j++)
+                for (int j = 0; j < listToSort.Count - 1; j++)
                 {
-                    if (items[j].CompareTo(items[j + 1]) == 1)//Check for greater than
+                    if (listToSort[j].CompareTo(listToSort[j + 1]) == 1)//Check for greater than
                     {
-                        temp = items[j];
-                        items[j] = items[j + 1];
-                        items[j + 1] = temp;
+                        temp = listToSort[j];
+                        listToSort[j] = listToSort[j + 1];
+                        listToSort[j + 1] = temp;
                     }
                 }
             }
@@ -232,6 +238,30 @@ namespace CustomListBuild
             count++;
             items = temp;
         }
-    }
 
+        public void RemoveRange(int startIndex, int amountToRemove)
+        {
+            T[] temporaryItems = items;
+            items = new T[capacity];
+            int itemsSkipped = 0;
+
+            for(int i = 0, j = 0; i < count; i++, j++)
+            {
+                if(temporaryItems[i] != null)
+                {
+                    if(j == startIndex)
+                    {
+                        if(itemsSkipped != amountToRemove)
+                        {
+                            itemsSkipped++;
+                            j--;
+                            continue;
+                        }
+                    }
+                    items[j] = temporaryItems[i];
+                }
+            }
+            count -= amountToRemove;
+        }
+    }
 }
