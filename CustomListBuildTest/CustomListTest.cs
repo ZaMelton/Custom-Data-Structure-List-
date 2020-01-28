@@ -833,5 +833,38 @@ namespace CustomListBuildTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void InsertTest()
+        {
+            //Arrange
+            CustomList<int> numberList = new CustomList<int>() { 1, 3, 5, 7 };
+            string expected = "13457";
+
+            //Act
+            numberList.Insert(2, 4);
+            string actual = numberList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void InsertStringTest()
+        {
+            //Arrange
+            CustomList<string> stringList = new CustomList<string>() { "i","like","ice","cream"};
+            string expected = "ireallylikeicecream";
+
+            //Act
+            stringList.Insert(1, "really");
+            string actual = stringList.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        
+
     }
 }

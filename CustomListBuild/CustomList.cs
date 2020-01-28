@@ -212,6 +212,26 @@ namespace CustomListBuild
             }
             return -1;
         }
+
+        public void Insert(int insertIndex, T value)
+        {
+            T[] temp = new T[capacity *= 2];
+
+            for (int i = 0, j = 0; i < count; i++, j++)
+            {
+                if (j == insertIndex)
+                {
+                    temp[j] = value;
+                    i--;
+                }
+                else
+                {
+                    temp[j] = items[i];
+                } 
+            }
+            count++;
+            items = temp;
+        }
     }
 
 }
