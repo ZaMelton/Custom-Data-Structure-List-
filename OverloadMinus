@@ -1,0 +1,31 @@
+ 
+ Overload of the - Operator
+ 
+	Takes in two lists as parameters, CustomList<T> one and CustomList<T> two. 
+	If any of the items in CustomList<T> one repeat in CustomList<T> two, the items will be
+	remove from CustomList one.
+ 
+ 
+ Parameters:
+	CustomList<T> one (the list to have duplicates removed from) and CustomList<T> two (the list .
+ 
+ 
+ Returns:
+	CustomList<T>
+	Will return a new list after all duplicates have been removed from CustomList<T> one.
+	
+Implements:
+	Remove(T value)
+ 
+Example:
+	        CustomList<int> items = new CustomList<int>() {1,2,3,4,5,6};
+            CustomList<int> itemsTwo = new CustomList<int>(){2,4,6,7,8};
+            CustomList<int> minused;
+			
+			minused = items - itemsTwo;
+			
+			Console.WriteLine($"The new list contains {minused.ToString()}");
+			
+			//Output: The new list contains 135
+		
+		
