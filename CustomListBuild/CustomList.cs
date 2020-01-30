@@ -143,7 +143,12 @@ namespace CustomListBuild
 
         public static CustomList<T> operator- (CustomList<T> one, CustomList<T> two)
         {
-            CustomList<T> minusedList = one;
+            CustomList<T> minusedList = new CustomList<T>();
+
+            for (int i = 0; i < one.Count; i++)
+            {
+                minusedList.Add(one[i]);
+            }
 
             for (int i = 0; i < two.Count; i++)
             {
